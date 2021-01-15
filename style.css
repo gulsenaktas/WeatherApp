@@ -1,15 +1,117 @@
-body{
-    background: #eeedec;
-    letter-spacing: 0.2em;
-    font-size: 0.8em;
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.container{
-    max-width: 400px;
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #33495f;
+  -webkit-transition: all 1.3s ease-in;
+  transition: all 1.3s ease-in;
 }
-.icon{
-    position: relative;
-    top: -50px;
-    border-radius: 50%;
-    width: 100px;
-    margin-bottom: -50px;
+
+.container .left-bar {
+  width: 50%;
+  height: 100vh;
+}
+
+.container .left-bar .information-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+  margin: 60% 20%;
+  color: #ffffff;
+}
+
+.container .left-bar .hello {
+  margin-bottom: 2%;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container .left-bar .title {
+  padding-bottom: 7vh;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container .left-bar input::-webkit-input-placeholder {
+  color: #ffffff;
+  opacity: 0.3;
+}
+
+.container .left-bar .input {
+  background-color: transparent;
+  width: 100%;
+  height: 15%;
+  font-size: 20px;
+  outline: none;
+  border-style: none;
+  border-bottom: 1px solid #ffffff;
+  color: white;
+}
+
+.container .left-bar .input-submit {
+  color: #006d77;
+  border-bottom: 1px solid #006d77;
+}
+
+.container .left-bar .input-submit::-webkit-input-placeholder {
+  color: #006d77;
+  opacity: 0.3;
+}
+
+.container .right-bar {
+  width: 50%;
+  height: 100vh;
+  background-image: url("/img/[GIF] Weather.gif");
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .right-bar .information-right {
+  margin-top: 20vh;
+  text-align: left;
+  text-shadow: 1px 2px 5px #ffffff;
+}
+
+.container .right-bar .info {
+  padding-bottom: -2vh;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container .right-bar #icon {
+  background-image: url("/img/icons/2.svg");
+  background-repeat: no-repeat;
+  height: 40%;
+  background-size: contain;
+  background-position: 50%;
+}
+
+.container .right-bar #city-name {
+  font-size: 16vh;
+}
+
+.container .right-bar #temp {
+  font-size: 11vh;
 }

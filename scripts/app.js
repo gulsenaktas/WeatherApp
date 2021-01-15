@@ -1,8 +1,13 @@
-const cityForm = document.querySelector("form")
-const card = document.querySelector(".card")
-const details = document.querySelector(".details")
-const time = document.querySelector("img.time")
-const icon = document.querySelector(".icon img")
+const form = document.querySelector("form")
+const input = document.querySelector(".input")
+// const card = document.querySelector(".card")
+const rightBar = document.querySelector(".right-bar")
+const icon = document.querySelector("#icon")
+const container = document.querySelector(".container")
+const informationLeft = document.querySelector(".information-left")
+const title = document.querySelector(".title")
+const hello = document.querySelector(".hello")
+
 
 const upDateUI = (data) => {
     console.log(data)
@@ -12,42 +17,54 @@ const upDateUI = (data) => {
 
     const{ cityDets, weather } = data;
 
-    details.innerHTML = `
-    <h5 class="my-3">${cityDets.EnglishName}</h5>
-    <div class="my-3">${weather.WeatherText}</div>
-    <div class="display-4 my-4">
-        <span>${weather.Temperature.Metric.Value}</span>
-        <span>&deg;C</span>
-    </div>
+    rightBar.innerHTML = `
+        <div class="information-right">
+        <div class="info" >
+                <img id="#icon" src="img/icons/${weather.WeatherIcon}.svg" alt="">    
+            </div>
+            <div class="info" id="condition">${weather.WeatherText}</div>
+            <div class="info" id="temp">${weather.Temperature.Metric.Value}&deg;C</div>
+            <div class="info" id="city-name">${cityDets.EnglishName}</div>
+        </div>
     `;
-
-    const iconSrc = `img/icons/${weather.WeatherIcon}.svg`
-    icon.setAttribute("src", iconSrc)
+    
+    hello.innerHTML = `Today ${cityDets.EnglishName}!`
+    input.classList.add("input-submit")
+    title.innerHTML = ` `
 
     let timeSrc = weather.IsDayTime ? "img/day.svg" : "img/night.svg" ;
-    time.setAttribute("src", timeSrc)
+    rightBar.style.backgroundImage = `url(${timeSrc})`
+    rightBar.style.backgroundRepeat="no-repeat";
+    rightBar.style.backgroundSize= "cover";
 
 
-    if(card.classList.contains("d-none")){
-        card.classList.remove("d-none");
-    }
+    // if(card.classList.contains("d-none")){
+    //     card.classList.remove("d-none");
+    // }
 
 };
 
 const updateCity = async (city) =>{
 
     const cityDets = await getCity(city);
+    console.log(cityDets)
     const weather = await getWheather(cityDets.Key);
 
-    return { cityDets, weather};
+    return {cityDets, weather};
 
 };
 
-cityForm.addEventListener("submit", e=>{
+form.addEventListener("submit", e=>{
     e.preventDefault();
 
-    const city = cityForm.city.value.trim();
-    cityForm.reset()
+    informationLeft.style.color = "#006d77"
+    rightBar.style.backgroundImage ="none"
+    container.style.backgroundColor ="#eeedec"
+    
+
+
+    const city = form.city.value.trim();
+    form.reset()
 
     updateCity(city)
     .then(data=> upDateUI(data) )
@@ -56,8 +73,8 @@ cityForm.addEventListener("submit", e=>{
     localStorage.setItem("city", city);
 });
 
-if(localStorage.getItem("city")){
-    updateCity(localStorage.getItem("city"))
-    .then(data=> upDateUI(data) )
-    .catch(err=> console.log(err));
-}
+// if(localStorage.getItem("city")){
+//     updateCity(localStorage.getItem("city"))
+//     .then(data=> upDateUI(data) )
+//     .catch(err=> console.log(err));
+// }
