@@ -10,8 +10,6 @@
   display: -ms-flexbox;
   display: flex;
   background-color: #33495f;
-  -webkit-transition: all 1.3s ease-in;
-  transition: all 1.3s ease-in;
 }
 
 .container .left-bar {
@@ -27,21 +25,19 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 50%;
-  margin: 60% 20%;
+  padding: 60% 5% 10% 10%;
   color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.container .left-bar .hello {
+.container .left-bar .information-left .hello {
   margin-bottom: 2%;
   font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-.container .left-bar .title {
+.container .left-bar .information-left .title {
   padding-bottom: 7vh;
   font-size: 18px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .container .left-bar input::-webkit-input-placeholder {
@@ -51,9 +47,9 @@
 
 .container .left-bar .input {
   background-color: transparent;
-  width: 100%;
+  width: 50%;
   height: 15%;
-  font-size: 20px;
+  font-size: 3vh;
   outline: none;
   border-style: none;
   border-bottom: 1px solid #ffffff;
@@ -61,12 +57,12 @@
 }
 
 .container .left-bar .input-submit {
-  color: #006d77;
-  border-bottom: 1px solid #006d77;
+  color: #243046;
+  border-bottom: 1px solid #243046;
 }
 
 .container .left-bar .input-submit::-webkit-input-placeholder {
-  color: #006d77;
+  color: #243046;
   opacity: 0.3;
 }
 
@@ -74,8 +70,9 @@
   width: 50%;
   height: 100vh;
   background-image: url("/img/[GIF] Weather.gif");
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -90,28 +87,81 @@
 
 .container .right-bar .information-right {
   margin-top: 20vh;
-  text-align: left;
   text-shadow: 1px 2px 5px #ffffff;
+  margin-left: 5%;
 }
 
-.container .right-bar .info {
+.container .right-bar .information-right .info {
   padding-bottom: -2vh;
-  font-size: 18px;
+  font-size: 3vh;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.container .right-bar #icon {
-  background-image: url("/img/icons/2.svg");
+.container .right-bar .information-right #icon {
+  background-color: #ffffff;
+  border-radius: 50%;
   background-repeat: no-repeat;
-  height: 40%;
   background-size: contain;
-  background-position: 50%;
 }
 
-.container .right-bar #city-name {
+.container .right-bar .information-right #city-name {
   font-size: 16vh;
 }
 
-.container .right-bar #temp {
+.container .right-bar .information-right #temp {
   font-size: 11vh;
+}
+
+@media (max-width: 576px) {
+  .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    height: 100vh;
+  }
+  .container .left-bar {
+    width: 100%;
+    height: 50vh;
+  }
+  .container .left-bar .information-left {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0;
+  }
+  .container .left-bar .information-left .input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  .container .right-bar {
+    background-position-y: 0;
+    height: 50vh;
+    width: 100%;
+    background-size: contain;
+  }
+  .container .right-bar .information-right {
+    margin: 0;
+    margin-left: 3%;
+  }
+  .container .right-bar .information-right .info {
+    padding-bottom: 1vh;
+  }
+  .container .right-bar .information-right #city-name {
+    font-size: 10vh;
+  }
+  .container .right-bar .information-right #temp {
+    font-size: 6vh;
+  }
 }
